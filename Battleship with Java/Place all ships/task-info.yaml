@@ -1,0 +1,50 @@
+type: edu
+files:
+  - name: src/battleship/Main.java
+    visible: true
+    learner_created: false
+  - name: test/Tests.java
+    visible: false
+    learner_created: false
+  - name: src/battleship/ship/AircraftCarrier.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/ship/Battleship.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/board/GameBoard.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/board/BoardSpace.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/ship/Destroyer.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/ship/ShipType.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/ship/Fleet.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/board/Coordinates.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/ship/Cruiser.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/ship/Submarine.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/ship/Ship.java
+    visible: true
+    learner_created: true
+  - name: src/battleship/Game.java
+    visible: true
+    learner_created: true
+feedback_link: https://hyperskill.org/learn/step/35305#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Sat, 01 Feb 2025 18:11:48 UTC"
+record: 2
