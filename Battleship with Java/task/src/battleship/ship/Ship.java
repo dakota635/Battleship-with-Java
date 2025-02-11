@@ -2,12 +2,12 @@ package battleship.ship;
 
 public abstract class Ship {
     protected ShipType shipType;
-    protected boolean[] damageReport;
+    protected int shipHealth;
     protected boolean destroyed;
 
     public Ship(ShipType shipType) {
         this.shipType = shipType;
-        this.damageReport = new boolean[this.shipType.getSize()];
+        this.shipHealth = this.shipType.getSize();
         this.destroyed = false;
     }
 
@@ -19,19 +19,16 @@ public abstract class Ship {
         return this.shipType.getSize();
     }
 
-    public boolean[] getDamageReport() {
-        return this.damageReport;
+    public void takeDamage() {
+        this.shipHealth -= 1;
+
+        if (this.shipHealth == 0) {
+            this.destroyed = true;
+            System.out.println("You sank a ship!");
+        }
     }
 
     public boolean isDestroyed() {
-        this.destroyed = true;
-
-        for (boolean segmentStatus : this.damageReport) {
-            if (!segmentStatus) {
-                this.destroyed = false;
-                break;
-            }
-        }
         return this.destroyed;
     }
 }

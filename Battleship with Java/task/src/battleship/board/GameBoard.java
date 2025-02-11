@@ -116,13 +116,26 @@ public class GameBoard {
         return this.gameBoard[coordinates.row()][coordinates.col()].attackSpace();
     }
 
-    @Override
-    public String toString() {
+    public void hideAllSpaces() {
+        for (int row = 0; row <= GameBoard.BOARD_ROWS; row++) {
+            for (int col = 0; col <= GameBoard.BOARD_COLS; col++) {
+                this.gameBoard[row][col].hideSpace();
+            }
+        }
+    }
+
+    public boolean isGameOver() {
+        return this.fleet.isDestroyed();
+    }
+
+    public String showBoard(boolean showSelf) {
         StringBuilder gameBoardStringBuilder = new StringBuilder();
 
         for (BoardSpace[] row : this.gameBoard) {
             for (BoardSpace space : row) {
-                gameBoardStringBuilder.append(space).append(" ");
+                String outSpace = showSelf ? space.showSelf() : space.showOpponent();
+                
+                gameBoardStringBuilder.append(outSpace).append(" ");
             }
             gameBoardStringBuilder.append(System.lineSeparator());
         }

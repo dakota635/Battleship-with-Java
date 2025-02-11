@@ -10,28 +10,39 @@ public class BoardSpace {
 
     private boolean isPlayable;
     private String spaceStatus;
+    private String displayStatus;
     private Ship ship;
 
     public BoardSpace() {
         this.isPlayable = true;
         this.spaceStatus = BoardSpace.FOG_OF_WAR;
+        this.revealSpace();
         this.ship = null;
     }
 
     public void setAsLabel(String label) {
         this.isPlayable = false;
         this.spaceStatus = label;
+        this.revealSpace();
     }
 
-    public boolean isPlayable() {
-        return this.isPlayable;
+    public void hideSpace() {
+        if (this.isPlayable) {
+            this.displayStatus = BoardSpace.FOG_OF_WAR;
+        }
+    }
+
+    public void revealSpace() {
+        this.displayStatus = this.spaceStatus;
     }
 
     public void setShip(Ship ship) {
         if (ship != null) {
             this.spaceStatus = BoardSpace.OCCUPIED_SPACE;
+            this.revealSpace();
         } else {
             this.spaceStatus = BoardSpace.FOG_OF_WAR;
+            this.revealSpace();
         }
         this.ship = ship;
     }
@@ -46,16 +57,24 @@ public class BoardSpace {
 
     public boolean attackSpace() {
         if (this.ship != null) {
-            this.spaceStatus = BoardSpace.HIT_SPACE;
+            if (!this.spaceStatus.equals(BoardSpace.HIT_SPACE)) {
+                this.spaceStatus = BoardSpace.HIT_SPACE;
+                this.ship.takeDamage();
+            }
+            this.revealSpace();
             return true;
         } else {
             this.spaceStatus = BoardSpace.MISS_SPACE;
+            this.revealSpace();
             return false;
         }
     }
 
-    @Override
-    public String toString() {
+    public String showSelf() {
         return this.spaceStatus;
+    }
+
+    public String showOpponent() {
+        return this.displayStatus;
     }
 }
